@@ -1,19 +1,21 @@
 <?php
-$question_task = "Какая задача стоит перед вами сегодня?\n";
-$question_time = "Сколько примерно времени эта задача займет?\n";
+$title = "Главная страница";
+$heading = "Добро пожаловать, гость!";
+$current_time = new DateTime('now');
+$year = $current_time->format('Y');
+$copywright = "Данный официальный сайт несет информационный характер и ни при каких условиях материалы и цены, размещенные на сайте, не являются публичной офертой.";
 
-$name = readline("Привет, как тебя зовут?\n");
-$age = (int) readline("Сколько тебе лет?\n");
-$task_1 = readline($question_task);
-$time_1 = (int) readline($question_time);
-$task_2 = readline($question_task);
-$time_2 = (int) readline($question_time);
-$task_3 = readline($question_task);
-$time_3 = (int) readline($question_time);
-$time_result = $time_1 + $time_2 + $time_3;
+$data_template = file_get_contents("template/main.php");
+$data_template = str_replace("{{title}}", $title, $data_template);
+$data_template = str_replace("{{heading}}", $heading, $data_template);
+$data_template = str_replace("{{current_time}}", $year, $data_template);
 
-echo "{$name}, сегодня у вас запланировано 3 приоритетных задачи на день:
-- {$task_1} ({$time_1}ч)
-- {$task_2} ({$time_2}ч)
-- {$task_3} ({$time_3}ч)
-Примерное время выполнения плана = {$time_result}ч";
+$a = 0;
+$b = 2;
+$a = $a + $b;
+$b = $a - $b;
+$a -= $b;
+
+
+echo $data_template;
+include_once "template/footer.php";
